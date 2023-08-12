@@ -24,7 +24,7 @@ import com.example.healtapp.viewmodel.KcalViewModel
 import com.example.healtapp.viewmodel.KcalViewModelProviderFactory
 import com.example.kaloriyolcusu.R
 import com.example.kaloriyolcusu.databinding.FragmentHomeBinding
-
+import java.text.DecimalFormat
 
 
 class HomeFragment : Fragment() {
@@ -88,49 +88,40 @@ class HomeFragment : Fragment() {
     private fun getAllKcalItemsLiveData() {
         viewModel.getAllKcalItemsLiveData().observe(viewLifecycleOwner) { kcalList ->
             if (kcalList.isNotEmpty()) {
-                val firstKcalItem = kcalList[0]
-                binding.name.text = firstKcalItem.calories
-                binding.fat.text = firstKcalItem.carbohydrateContent
-                Log.d("HomeFragment", "Carbohydrates: ${firstKcalItem.carbohydrateContent}")
+                var totalCalories = 0
+                var totalCarbohydrates = 0.0
+                var totalProtein = 0.0
+                var totalFat = 0.0
 
+                for (kcalItem in kcalList) {
+                    totalCalories += kcalItem.calories.toIntOrNull() ?: 0
+                    totalCarbohydrates += kcalItem.carbohydrateContent.toDoubleOrNull() ?: 0.0
+                    totalProtein += kcalItem.proteinContent.toDoubleOrNull() ?: 0.0
+                    totalFat += kcalItem.fatContent.toDoubleOrNull() ?: 0.0
+                }
 
-                val caloriesString = firstKcalItem.calories
-                val carbohydratesString = firstKcalItem.carbohydrateContent
-                val proteinString = firstKcalItem.proteinContent
-                val fatString = firstKcalItem.fatContent
+                val decimalFormat = DecimalFormat("#.#")
 
-                val calories = caloriesString.toIntOrNull()
-                val carbohydrates = carbohydratesString.toIntOrNull()
-                val protein = proteinString.toIntOrNull()
-                val fat = fatString.toIntOrNull()
+                binding.calori.text = decimalFormat.format(totalCalories.toDouble())
+                binding.carb.text = decimalFormat.format(totalCarbohydrates)
+                binding.protein.text = decimalFormat.format(totalProtein)
+                binding.fat.text = decimalFormat.format(totalFat)
 
-                if (calories != null) {
-                    val maxProgress = 1000
-                    binding.progressBar2.max = maxProgress
-                    updateProgressBar(calories, maxProgress, binding.progressBar2)
-                }
-                else if (carbohydrates != null) {
-                    val maxProgress = 1000
-                    binding.progressBar3.max = maxProgress
-                    updateProgressBar(carbohydrates, maxProgress, binding.progressBar3)
-                }
-                else if (protein != null) {
-                    val maxProgress = 1000
-                    binding.progressBar4.max = maxProgress
-                    updateProgressBar(protein, maxProgress, binding.progressBar4)
-                }
-                else if (fat != null) {
-                    val maxProgress = 1000
-                    binding.progressBar5.max = maxProgress
-                    updateProgressBar(fat, maxProgress, binding.progressBar5)
-                }
-                else {
-                    Log.e("HomeFragment", "Hata: Değerleri dönüştüremedim.")
-                }
+                val maxProgress = 1000
+                binding.caloriprogress.max = maxProgress
+                binding.carbprogressBar.max = maxProgress
+                binding.proteinProgressBar.max = maxProgress
+                binding.fatprogress.max = maxProgress
+
+                updateProgressBar(totalCalories.toDouble(), maxProgress, binding.caloriprogress)
+                updateProgressBar(totalCarbohydrates, maxProgress, binding.carbprogressBar)
+                updateProgressBar(totalProtein, maxProgress, binding.proteinProgressBar)
+                updateProgressBar(totalFat, maxProgress, binding.fatprogress)
+            } else {
+                Log.e("HomeFragment", "Hata: Veri listesi boş.")
             }
         }
     }
-
     private fun updateProgressBar(value: Int, maxProgress: Int, progressBar: ProgressBar) {
         val currentProgress = progressBar.progress
 
@@ -142,10 +133,25 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun updateProgressBar(value: Double, maxProgress: Int, progressBar: ProgressBar) {
+        val currentProgress = progressBar.progress
+
+        val newProgress = currentProgress + value.toInt()
+        if (newProgress <= maxProgress) {
+            progressBar.progress = newProgress
+        } else {
+            progressBar.progress = maxProgress
+        }
+    }
+
 
 
     private fun resetProgressBar() {
-        binding.progressBar2.progress = 0
+        binding.caloriprogress.progress = 0
+        binding.carbprogressBar.progress = 0
+        binding.proteinProgressBar.progress = 0
+        binding.fatprogress.progress = 0
+
     }
     private fun deleteAllKcalItems() {
         viewModel.deleteAllKcalItems()

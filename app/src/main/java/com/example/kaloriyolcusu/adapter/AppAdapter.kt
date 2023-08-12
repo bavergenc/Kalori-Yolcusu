@@ -38,21 +38,20 @@ class AppAdapter(
         Glide.with(context).load(currentItem.image).into(holder.list_item_binding.foodImage)
         holder.list_item_binding.imageView2.setBackgroundResource(R.drawable.menu_default)
 
-        holder.list_item_binding.imageView2.setOnClickListener {
 
             holder.list_item_binding.imageView2.setOnClickListener {
 
                 val calories = currentItem.calories
-                val carbonhidrat = currentItem.carbohydrateContent
+                val carbohydrateContent = currentItem.carbohydrateContent
                 val protein = currentItem.proteinContent
                 val yağ = currentItem.fatContent
 
-                val kcal = Kcal(0, "", "", calories, carbonhidrat, protein, yağ, "")
+                val kcal = Kcal(0, "", "", calories, carbohydrateContent, protein, yağ, "")
 
                 viewModel.addKcalNoteAndShowToast(kcal, context)
 
             }
-        }
+
     }
 
     override fun getItemCount(): Int = appList.size
