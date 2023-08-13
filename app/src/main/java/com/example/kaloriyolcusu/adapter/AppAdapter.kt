@@ -29,11 +29,11 @@ class AppAdapter(
     override fun onBindViewHolder(holder: ReciyclerViewHolder, position: Int) {
         val currentItem = appList[position]
         val kcalText = "${currentItem.calories} kcal"
-        val kcarbText = "${currentItem.carbohydrateContent} kcal"
+        val nameText = "${currentItem.name}"
 
 //        holder.list_item_binding.foodName.text = currentItem.name
         holder.list_item_binding.foodKcal.text = kcalText
-        holder.list_item_binding.foodCarb.text = kcarbText
+        holder.list_item_binding.foodName.text = nameText
 
         Glide.with(context).load(currentItem.image).into(holder.list_item_binding.foodImage)
         holder.list_item_binding.imageView2.setBackgroundResource(R.drawable.menu_default)
@@ -45,8 +45,9 @@ class AppAdapter(
                 val carbohydrateContent = currentItem.carbohydrateContent
                 val protein = currentItem.proteinContent
                 val yağ = currentItem.fatContent
+                val image = currentItem.image
 
-                val kcal = Kcal(0, "", "", calories, carbohydrateContent, protein, yağ, "")
+                val kcal = Kcal(0, "", image, calories, carbohydrateContent, protein, yağ, "")
 
                 viewModel.addKcalNoteAndShowToast(kcal, context)
 

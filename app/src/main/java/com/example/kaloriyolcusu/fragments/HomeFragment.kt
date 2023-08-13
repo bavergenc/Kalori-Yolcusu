@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
 
 
         getAllKcalItemsLiveData()
-        deletedbclick()
+        OpenViewFoodsFragment()
 
         binding.kcalButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_kcalFragment)
@@ -77,10 +77,12 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun deletedbclick() {
-        binding.deleteDb.setOnClickListener {
-            deleteAllKcalItems()
-            resetProgressBar()
+    private fun OpenViewFoodsFragment() {
+        binding.viewFoods.setOnClickListener {
+//            deleteAllKcalItems()
+//            resetProgressBar()
+            findNavController().navigate(R.id.action_homeFragment_to_viewFoodsFragment)
+
 
         }
     }
@@ -102,21 +104,25 @@ class HomeFragment : Fragment() {
 
                 val decimalFormat = DecimalFormat("#.#")
 
-                binding.calori.text = decimalFormat.format(totalCalories.toDouble())
-                binding.carb.text = decimalFormat.format(totalCarbohydrates)
-                binding.protein.text = decimalFormat.format(totalProtein)
-                binding.fat.text = decimalFormat.format(totalFat)
+                binding.calori.text = decimalFormat.format(totalCalories.toDouble()) + " / 2000"
+                binding.carb.text = decimalFormat.format(totalCarbohydrates)+ " / 97"
+                binding.protein.text = decimalFormat.format(totalProtein)+ " / 97"
+                binding.fat.text = decimalFormat.format(totalFat)+ " / 57"
 
-                val maxProgress = 1000
-                binding.caloriprogress.max = maxProgress
-                binding.carbprogressBar.max = maxProgress
-                binding.proteinProgressBar.max = maxProgress
-                binding.fatprogress.max = maxProgress
+                val maxProgressCalorie = 2000
+                val maxProgressCarb = 97
+                val maxProgressProtein = 97
+                val maxProgressFat = 57
 
-                updateProgressBar(totalCalories.toDouble(), maxProgress, binding.caloriprogress)
-                updateProgressBar(totalCarbohydrates, maxProgress, binding.carbprogressBar)
-                updateProgressBar(totalProtein, maxProgress, binding.proteinProgressBar)
-                updateProgressBar(totalFat, maxProgress, binding.fatprogress)
+                binding.caloriprogress.max = maxProgressCalorie
+                binding.carbprogressBar.max = maxProgressCarb
+                binding.proteinProgressBar.max = maxProgressProtein
+                binding.fatprogress.max = maxProgressFat
+
+                updateProgressBar(totalCalories.toDouble(), maxProgressCalorie, binding.caloriprogress)
+                updateProgressBar(totalCarbohydrates, maxProgressCarb, binding.carbprogressBar)
+                updateProgressBar(totalProtein, maxProgressProtein, binding.proteinProgressBar)
+                updateProgressBar(totalFat, maxProgressFat, binding.fatprogress)
             } else {
                 Log.e("HomeFragment", "Hata: Veri listesi boş.")
             }

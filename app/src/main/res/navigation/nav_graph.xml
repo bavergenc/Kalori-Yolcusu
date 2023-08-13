@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_homeFragment_to_kcalFragment"
             app:destination="@id/kcalFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_viewFoodsFragment"
+            app:destination="@id/viewFoodsFragment" />
     </fragment>
     <fragment
         android:id="@+id/kcalFragment"
         android:name="com.example.kaloriyolcusu.fragments.KcalFragment"
         android:label="fragment_kcal"
         tools:layout="@layout/fragment_kcal" />
+    <fragment
+        android:id="@+id/viewFoodsFragment"
+        android:name="com.example.kaloriyolcusu.fragments.ViewFoodsFragment"
+        android:label="fragment_view_foods"
+        tools:layout="@layout/fragment_view_foods" />
 </navigation>
