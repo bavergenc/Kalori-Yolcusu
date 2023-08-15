@@ -21,4 +21,9 @@ interface KcalDao {
 
     @Query("DELETE FROM kcal_items")
     suspend fun deleteAllKcalItems()
+
+    @Query("DELETE FROM kcal_items WHERE id = :id")
+    suspend fun deleteKcalItemById(id: Long)
+    @Delete
+    suspend fun deleteKcal(kcal: Kcal)
 }

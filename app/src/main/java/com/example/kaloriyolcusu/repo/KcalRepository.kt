@@ -20,4 +20,13 @@ class KcalRepository(private val db: KcalDatabase) {
     suspend fun deleteAllKcalItems() {
         db.kcalDao().deleteAllKcalItems()
     }
+
+    suspend fun deleteKcalItemById(id: Long) {
+        db.kcalDao().deleteKcalItemById(id)
+    }
+
+    suspend fun deleteKcalItem(item: Kcal) {
+        db.kcalDao().deleteKcal(item)
+    }
+
 }

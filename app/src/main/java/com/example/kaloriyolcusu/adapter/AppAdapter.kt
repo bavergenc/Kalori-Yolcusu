@@ -2,6 +2,7 @@ package com.example.healtapp.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
@@ -37,6 +38,8 @@ class AppAdapter(
 
         Glide.with(context).load(currentItem.image).into(holder.list_item_binding.foodImage)
         holder.list_item_binding.imageView2.setBackgroundResource(R.drawable.menu_default)
+        val addIconImageView = holder.list_item_binding.addFood
+        addIconImageView.visibility = View.VISIBLE
 
 
             holder.list_item_binding.imageView2.setOnClickListener {

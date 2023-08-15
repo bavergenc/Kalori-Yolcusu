@@ -35,5 +35,17 @@ class KcalViewModel(
             noteRepository.deleteAllKcalItems()
         }
     }
+
+    fun deleteKcalItemById(id: Long) {
+        viewModelScope.launch {
+            noteRepository.deleteKcalItemById(id)
+        }
+    }
+
+    fun deleteKcalItem(item: Kcal) {
+        viewModelScope.launch {
+            noteRepository.deleteKcalItem(item)
+        }
+    }
 }
 
