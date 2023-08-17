@@ -138,7 +138,7 @@
         android:layout_marginTop="56dp"
         android:background="@drawable/cardview_shape"
         android:gravity="center"
-        android:text="@string/kcal"
+        android:text="@string/food_list"
         android:textColor="@color/text_color"
         app:layout_constraintEnd_toStartOf="@+id/profile_button"
         app:layout_constraintHorizontal_bias="0.467"

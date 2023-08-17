@@ -31,10 +31,12 @@ class AppAdapter(
         val currentItem = appList[position]
         val kcalText = "${currentItem.calories} kcal"
         val nameText = "${currentItem.name}"
+        val servingText = "${currentItem.servingSize}"
 
 //        holder.list_item_binding.foodName.text = currentItem.name
         holder.list_item_binding.foodKcal.text = kcalText
         holder.list_item_binding.foodName.text = nameText
+        holder.list_item_binding.foodService.text = servingText
 
         Glide.with(context).load(currentItem.image).into(holder.list_item_binding.foodImage)
         holder.list_item_binding.imageView2.setBackgroundResource(R.drawable.menu_default)
@@ -49,8 +51,10 @@ class AppAdapter(
                 val protein = currentItem.proteinContent
                 val yağ = currentItem.fatContent
                 val image = currentItem.image
+                val name = currentItem.name
+                val servingSize = currentItem.servingSize
 
-                val kcal = Kcal(0, "", image, calories, carbohydrateContent, protein, yağ, "")
+                val kcal = Kcal(0, name, image, calories, carbohydrateContent, protein, yağ, servingSize)
 
                 viewModel.addKcalNoteAndShowToast(kcal, context)
 

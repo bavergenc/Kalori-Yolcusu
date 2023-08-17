@@ -2,6 +2,8 @@
     <string name="app_name">KaloriYolcusu</string>
     <string name="aralikli_oruc">aralikli oruc</string>
     <string name="kcal">Kcal</string>
+    <string name="food_list">Food List</string>
+
     <string name="fitness">Fitness</string>
     <string name="profile">Profile</string>
     <string name="search">urun ara</string>
