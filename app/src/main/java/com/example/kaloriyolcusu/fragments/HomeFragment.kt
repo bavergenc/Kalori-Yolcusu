@@ -39,6 +39,7 @@ class HomeFragment : Fragment() , FoodAdapter.OnDeleteClickListener {
     private var stepCount: Int = 0
     private lateinit var viewModel: KcalViewModel
     private lateinit var foodAdapter: FoodAdapter
+    private var waterConsumed = 0
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -63,23 +64,18 @@ class HomeFragment : Fragment() , FoodAdapter.OnDeleteClickListener {
 
         getAllKcalItemsLiveData()
         OpenViewFoodsFragment()
+        binding.waterprogress.max = 2000
+
+        binding.addWater.setOnClickListener {
+            increaseWaterConsumed()
+        }
 
         binding.kcalButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_kcalFragment)
         }
+        updateWaterText()
 
-        sensorManager = requireActivity().getSystemService(Context.SENSOR_SERVICE) as SensorManager
-        stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-        if (stepSensor == null) {
-            Toast.makeText(requireContext(), "no step", Toast.LENGTH_LONG).show()
-        } else {
-            sensorManager.registerListener(
-                stepSensorListener,
-                stepSensor,
-                SensorManager.SENSOR_DELAY_NORMAL
-            )
-            Toast.makeText(requireContext(), "yes step", Toast.LENGTH_LONG).show()
-        }
+
     }
 
     private fun OpenViewFoodsFragment() {
@@ -134,6 +130,14 @@ class HomeFragment : Fragment() , FoodAdapter.OnDeleteClickListener {
             }
     }
     }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("waterConsumed", waterConsumed)
+    }
+
+    private fun updateWaterText() {
+        binding.waterText.text = "$waterConsumed / 2000"
+    }
 
     private fun resetProgressBars() {
         binding.caloriprogress.progress = 0
@@ -165,51 +169,13 @@ class HomeFragment : Fragment() , FoodAdapter.OnDeleteClickListener {
 
 
 
-
-
-    override fun onResume() {
-        super.onResume()
-        sensorManager.registerListener(
-            stepSensorListener,
-            stepSensor,
-            SensorManager.SENSOR_DELAY_NORMAL
-        )
-    }
-
-    override fun onPause() {
-        super.onPause()
-        sensorManager.unregisterListener(stepSensorListener)
-    }
-
-    private val stepSensorListener = object : SensorEventListener {
-        override fun onAccuracyChanged(sensor: Sensor?, accuracy: Int) {
-            // Do nothing
-        }
-
-        override fun onSensorChanged(event: SensorEvent?) {
-            event?.let {
-                val steps = event.values[0]
-                updateStepCount(steps.toInt())
-            }
+    private fun increaseWaterConsumed() {
+        if (waterConsumed < 2000) {
+            waterConsumed += 200
+            binding.waterprogress.progress = waterConsumed
+            updateWaterText()
         }
     }
-
-    private fun updateStepCount(currentStepCount: Int) {
-        if (stepCount == 0) {
-            stepCount = currentStepCount
-        } else {
-            val newSteps = currentStepCount - stepCount
-            stepCount = currentStepCount
-            stepCount += newSteps
-            binding.stepCount.text = stepCount.toString()
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
     override fun onDeleteClicked(item: Kcal) {
         viewModel.getAllKcalItemsLiveData().observe(viewLifecycleOwner) { kcalList ->
 

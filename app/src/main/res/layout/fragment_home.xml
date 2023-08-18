@@ -7,149 +7,26 @@
     android:background="@color/black">
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/step_constrain"
-        android:layout_width="@dimen/_290sdp"
-        android:layout_height="@dimen/_150sdp"
-        android:layout_marginStart="@dimen/_3sdp"
-        android:layout_marginTop="@dimen/_35sdp"
-        android:layout_marginEnd="@dimen/_3sdp"
-        android:background="@drawable/cardview_shape"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="@dimen/_150sdp"
-            android:layout_height="@dimen/_150sdp"
-            android:layout_margin="@dimen/_12sdp"
-            android:indeterminateTint="@color/redtext_color"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="@dimen/_130sdp" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_12sdp"
-            android:layout_marginEnd="@dimen/_75sdp"
-            android:text="Move"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_15sdp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="1dp"
-            android:layout_marginEnd="93dp"
-            android:text="32/190 Kcal"
-            android:textColor="@color/redtext_color"
-
-            android:textSize="@dimen/_15sdp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.118"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:layout_marginEnd="@dimen/_75sdp"
-            android:text="Steps"
-            android:textColor="@color/white"
-
-            android:textSize="@dimen/_15sdp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-        <TextView
-            android:id="@+id/step_count"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_65sdp"
-            android:text="864"
-            android:textColor="@color/redtext_color"
-
-            android:textSize="@dimen/_15sdp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.029"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
-
-        <TextView
-            android:id="@+id/textView8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_65sdp"
-            android:text="Distance"
-            android:textColor="@color/white"
-
-            android:textSize="@dimen/_15sdp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/step_count" />
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginEnd="@dimen/_65sdp"
-            android:text="0,64km"
-            android:textColor="@color/redtext_color"
-            android:textSize="@dimen/_15sdp"
-            app:layout_constraintEnd_toStartOf="@+id/progressBar"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/kcal_button"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="60dp"
         android:background="@drawable/cardview_shape"
         android:gravity="center"
         android:text="@string/food_list"
         android:textColor="@color/text_color"
-        app:layout_constraintEnd_toStartOf="@+id/profile_button"
-        app:layout_constraintHorizontal_bias="0.467"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/step_constrain"
+        app:layout_constraintVertical_bias="0.267" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/profile_button"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="44dp"
         android:background="@drawable/cardview_shape"
         android:gravity="center"
@@ -157,29 +34,26 @@
         android:textColor="@color/text_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/step_constrain"
+        app:layout_constraintVertical_bias="0.267" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="@dimen/_290sdp"
 
         android:layout_height="@dimen/_150sdp"
-        android:layout_marginStart="@dimen/_3sdp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="@dimen/_3sdp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/cardview_shape"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/step_constrain">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/fat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="TextView"
+            android:text="0/0"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="@+id/fatprogress"
@@ -191,12 +65,11 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_marginEnd="4dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             android:background="@color/text_color"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.957"
-             />
+            app:layout_constraintVertical_bias="0.957" />
 
 
         <ProgressBar
@@ -261,7 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="TextView"
+            android:text="0/0"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="@+id/carbprogressBar"
@@ -273,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="TextView"
+            android:text="0/0"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="@+id/caloriprogress"
@@ -285,7 +158,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="TextView"
+            android:text="0/0"
             android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintEnd_toEndOf="@+id/protein_progressBar"
@@ -352,6 +225,134 @@
             app:layout_constraintHorizontal_bias="0.523"
             app:layout_constraintStart_toStartOf="@+id/view_foods"
             app:layout_constraintTop_toTopOf="@+id/view_foods" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/step_constrain"
+        android:layout_width="@dimen/_290sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/cardview_shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <ProgressBar
+            android:id="@+id/waterprogress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/_240sdp"
+            android:layout_height="15dp"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="80dp"
+            android:progressDrawable="@drawable/oval_water_progress_bar"
+            android:scaleY="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.087"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/water" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="196dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/water_cup" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/water_cup" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="252dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/water_cup" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/water_cup" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/water_cup" />
+
+        <ImageView
+            android:id="@+id/add_water"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginEnd="28dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/baseline_add_24" />
+
+        <TextView
+            android:id="@+id/water_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="24dp"
+            android:text="0/0"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

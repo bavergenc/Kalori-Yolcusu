@@ -6,6 +6,8 @@
     <color name="redtext_color">#ed1550</color>
     <color name="text_color">#b9ff01</color>
     <color name="transparent">#FFFFFF</color>
+    <color name="water_color">#4fc2f8</color>
+
     <color name="transparent_white">#C1504E4E</color>
     <color name="transparent_red">#FFFF0000</color>
 </resources>
